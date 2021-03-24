@@ -1,0 +1,30 @@
+cfg
+
+faixas de remuneração
+promax pega as info e joga pra todas as geo
+
+j:/desenvolvimento>>promax central
+pcdb5003/5004
+esse excel tem as info de percentuais, gera um txt
+subo no promax central q distribui a info em todas as geo
+
+
+depois de exportar
+rodar o pw00625s pra importar num cdd o .cfg gerado
+
+acessar a tela que tem os dados da remuneração.
+
+
+[12:23] Stephanie Ingrid de Campos Menezes
+Acessar o caminho : J:\Desenvolvimento\Produtos\HB.Serviços\Promax Central\Documentação\RELPROGAlterar e salvar a planilha, 
+conforme planilha do Jira
+Na planilha clicar no botão Gerar pcdb5003.cfg epcdb5004.cfg
+Vai no C:Promax para confirmar se o arquivo foi gerado
+Vai em executar e coloca o caminho do Promax central colocar nas pasta int/dvsDa um control-c control-v, da pasta do C para o promax central e no RELPROG
+Acessar o promax central Vai no caminho 06.02.05 para fazer a importação Clicar em Importar, 
+Confirmar se o caminho é a int/dvsPara a exportação é gerado apenas um arquivo para importação no CDD: 06.02.06 exportação
+Cria arquivo zipado . Cfg no diretório \\172.22.4.252\transf\crr\spool\2a 
+Na máquina(M:) 63 \\172.22.4.252\integ\2a colocar lá extraido o arquivo
+Essa máquina é do ambiente de AceiteAbrir PROMAX de aceite, e em rotinas especiais rodar o programa pw00625s
+Clicar em importar
+

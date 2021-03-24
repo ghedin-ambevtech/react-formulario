@@ -1,0 +1,15 @@
+subir pra aceite:
+
+baixar a versão mais nova do componente na pasta mais atual que será atualizada.
+
+salvar essa versão como nova
+
+buscar a versão com alterações e sobrescrever a na pasta atual a versão baixada
+
+comparar a versão com a biblioteca. Atualizar versão e retirar debugbreak.
+
+Se estiver tudo certo, compilar e devolver(*).
+
+Agora é compilar em aceite.
+
+No fonte seguro, compilar, procurar o programa, que não aparecerá na pata atual, já que foi devolvido(*) e compilar em D1.

@@ -1,0 +1,11 @@
+http://172.22.7.63/cgi-bin/PP00100.exe?ppopcao=1&call=PP00100
+
+07.22.11
+PWPE0182 - baixa arquivos
+no filtro nome do arquivo
+
+
+executar
+//172.22.7.63\integ\dataux aqui ficam os arquivos compactados baixados
+4.242 e producao.
+

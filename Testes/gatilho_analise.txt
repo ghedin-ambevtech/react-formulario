@@ -1,0 +1,37 @@
+PW02026C.CBL >> PW02046C.CBL >> PW00425S >> PW02519R
+
+PW02026C.CBL
+
+section:
+2650-move-formulario-arquivo
+Valoriza:
+			fparf-id-gatilho-diario-vde
+			fparf-id-gatilho-diario-vdi
+			fparf-id-gatilho-diario-rn
+
+
+ver:
+       9000-busca-faixa-vd section.
+	   9000-busca-faixas-volume-vd
+tem tratamento pra gatilho na variável f4616-perc-gatilho
+que é utilizada em vários programas para formatar dados de gatilho.
+Esse tratamento está declarado no programa, mas não é utilizado. Pelo menos não nesse ponto do processo.
+
+
+
+PW02046C.CBL
+
+Ao inicializar, faz acesso ao módulo PW00425S e obtem as informações de gatilho.
+Mas no processamento pode acessar o 2200-calcular-remuneracao, que por sua vez executa 9000-executa-calculo, que em caso de um erro pode mover "s" para gatilho sempre.
+            if   lw-tem-erros equal 9
+                 move zeros             to lw-tem-erros
+                 move "S"               to ws-gatilho
+            end-if
+
+
+
+
+
+
+
+

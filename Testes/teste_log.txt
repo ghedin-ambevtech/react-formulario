@@ -1,0 +1,18 @@
+http://127.0.0.1:8080/cgi-bin/PP00100.exe?ppopcao=55&requisicao=164&request=7&opcao=9&dtInclusaoInicial=01/01/2020&dtInclusaoFinal=01/10/2020&cdUnidade=0810137
+http://172.22.7.63/cgi-bin/PP00100.exe?ppopcao=55&requisicao=164&request=7&opcao=9&dtInclusaoInicial=01/01/2020&dtInclusaoFinal=01/10/2020&cdUnidade=0810204 >GEO SP
+http://172.22.7.62/cgi-bin/PP00100.exe?ppopcao=55&requisicao=164&request=7&opcao=9&dtInclusaoInicial=01/01/2020&dtInclusaoFinal=01/10/2020&cdUnidade=0030619
+
+http://172.22.7.63/cgi-bin/PP00100.exe?ppopcao=1&call=PP00100
+
+
+
+f-cd-empresa = 081
+f-cd-filial = 0137
+
+lnk-cd-empresa = 0
+lnk-cd-filial = 0
+
+wt-cd-empresa(1) = 003
+wt-cd-filial(1)= 0137
+
+ver ws-data-cadastramento

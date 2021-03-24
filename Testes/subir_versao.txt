@@ -1,0 +1,6 @@
+subir uma versão:
+puxa do fonte seguro para a fonte que subirá...sempre a mais atual
+compilar servidor 88 unix
+login:promax
+senha:Italia90
+depois de compilar desistir, pode desistir ou devolver

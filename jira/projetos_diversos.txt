@@ -1,0 +1,2 @@
+Jira de insiponibilidade de ambiente/ energia/outros
+https://jira.hbsis.com.br/browse/BDR-1186

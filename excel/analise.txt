@@ -1,0 +1,78 @@
+Sendo assim, este novo campo estaria na mesma estrutura dos outros três.
+
+      "indicadorPromo": "HE - Hércules" (Colocar a origem da promoção)
+      "dealId": "HER-41718356-61d7-468e-842c-b04914c3b3ad" (Colocar o ID da compra)
+      "externalId": "HER-1625" (Colocar o código resumido aqui)
+      "nroPedidoSite": "1223439058" (Colocar o número do pedido B2B aqui)
+
+
+           03 ws-cabecalho-produtos.
+              05 filler                            pic x(13) value "Cód. Produto".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(07) value "Unidade".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(09) value "Descrição".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(10) value "Quantidade".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(10) value "Fator HL".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(10) value "Volume HL".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(14) value "Valor Original".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(14) value "Preço Unitário".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(13) value "Desconto Item".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(11) value "Tabela Esc.".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(18) value "Indicador Promoção".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(14) value "Promo Hércules".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(10) value "Total Item".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(04) value "Ação".
+              05 filler                            pic x(01) value ";".
+              05 filler                            pic x(14) value "Id Bonificação".
+              05 filler                            pic x(01) value ";".
+
+
+é quando grava o registro: write rcsv-registro
+
+Aqui está a montagem da linha de detalhe de cada produto
+05 ws-id-promocao-prod               pic x(40) value spaces.
+05 filler                            pic x(01) value ";".   
+05 ws-cd-promo-hercules              pic x(64) value spaces.
+
+
+                          when "HE"
+                               move "HE - Hércules"    to ws-id-promocao-prod
+                               if   ws-id-origem-pedido = "B2B Global"
+                                    move w40200-ds-critica-magento to ws-cd-promo-hercules    *> Pela urgência da demanda, campo w40200-ds-critica-magento foi usado para não causar indisponibilidade,
+                               end-if                                                         *> mas deverá ser criado campo novo pra informação
+
+já estava vindo de um campo que não tem valor. Como montar esse dealId e externalId? 
+viria do w40200 ou do w40100
+
+
+ws99076-externalid
+
+
+9000-obter-pricing-reason
+9000-obter-pricing-reason-it
+w54600-external-id
+
+
+
+
+move fcfmf-nr-id-pedido-site to 
+
+****************
+                 initialize                        w40200-itens-pedido-facil
+                 move fcfmf-nr-id-pedido-site     to w40200-nr-id-pedido-site
+                 invoke ws-obj-efw402-itens c-start using c-chave-1, c-start-maior-igual, w40200-itens-pedido-facil returning lk-retorno-cl
+                 invoke ws-obj-efw402-itens c-read-next using w40200-itens-pedido-facil returning lk-retorno-cl
+
+********************

@@ -1,0 +1,294 @@
+trecho antigo do codigo
+
+
+      *>===================================================================================
+      *>            BDR-1149 - Inicio
+       2004-obter-dados-promo-id section.
+       2004.
+      *> Acesso a pedidos itens site
+
+           initialize w40200-itens-pedido-facil
+                      ws-indicador-promo
+                      ws-deal-id
+                      ws-external-id
+                      ws-nro-pedido-site.
+
+
+           move fcfmf-nr-id-pedido-site     to w40200-nr-id-pedido-site
+                                               ws-nro-pedido-site
+           move fcfmf-sequencia             to w40200-nr-sequencia
+           move fcfmf-sequencia             to w40200-nr-sequencia
+
+           move fcfis-nr-seq-item-compra    to wk-s9-03.
+
+            move "2004-obter-dados-promo-id"      to ws99040-ds-section
+            move spaces                    to ws99040-ds-message
+            string "fcfmf-nr-id-pedido-site: " ws-nro-pedido-site " / "
+                   "fcfmf-sequencia: " fcfmf-sequencia " / "
+                   "fcfis-sequencia:" fcfis-sequencia " / "
+                   "fcfis-nr-seq-item-compra: " wk-9-03  delimited by size into ws99040-ds-message
+            perform 9000-tracelog.
+
+      *>    move zeros                       to w40200-nr-sequencia
+
+           invoke ws-obj-efw402 c-start     using c-chave-1, c-start-maior-igual, w40200-itens-pedido-facil
+                                                   returning lk-retorno-cl
+
+           invoke ws-obj-efw402 c-read-next using w40200-itens-pedido-facil
+                                                   returning lk-retorno-cl.
+           if not lk-operacao-ok
+               if  ws99040-usar-tracelog-true
+                   move "9000-obter-pricing-reason-it" to ws99040-ds-section
+                   string "==> pedido:" fcfmf-nr-id-pedido-site delimited by "   " into ws99040-ds-message
+                   perform 9000-tracelog
+               end-if
+           else
+               perform 2005-obter-ind-promo
+           end-if.
+
+       2004-exit.
+           exit.
+      *>===================================================================================
+       2005-obter-ind-promo      section.
+       2005.
+      *> Acesso pedidos mestre site
+
+           initialize w40100-mestre-pedido-facil.
+
+           move fcfmf-nr-id-pedido-site     to w40100-nr-id-pedido-site
+
+           invoke ws-obj-efw401 c-read-ran using c-chave-1, w40100-mestre-pedido-facil
+                                                   returning lk-retorno-cl
+           if not lk-operacao-ok
+              if   ws99040-usar-tracelog-true
+                   move "2005-obter-ind-promo" to ws99040-ds-section
+                   string "==> pedido:" fcfmf-nr-id-pedido-site delimited by "   " into ws99040-ds-message
+                   perform 9000-tracelog
+              end-if
+              move spaces                      to ws-indicador-promo
+           else
+               move w40200-ds-desconto         to ws-indicador-promo
+               if   w40200-hercules
+                    if   w40100-origem-global
+                         move w40200-id-desconto to ws-deal-id
+                         perform 2006-obter-external-id
+                    end-if
+               end-if
+           end-if.
+
+       2005-exit.
+            exit.
+      *>===================================================================================
+       2006-obter-external-id    section.
+       2006.
+      *> Acesso a detalhe de precos(Pricing Reason Detail)
+
+           initialize w54600-pricing-reason-detail
+
+           move fcfmf-nr-id-pedido-site        to w54600-id-pedido
+           move w40200-nr-sequencia            to w54600-id-sequencia-item
+
+           invoke ws-obj-efw546 c-start        using c-chave-1, c-start-maior-igual, w54600-pricing-reason-detail
+                                               returning lk-retorno-cl
+
+           invoke ws-obj-efw546 c-read-next    using w54600-pricing-reason-detail
+                                               returning lk-retorno-cl
+
+           if not lk-operacao-ok
+              if   ws99040-usar-tracelog-true
+                   move "2006-obter-external-id"
+                                               to ws99040-ds-section
+                   string "==> id. pedido:" w54600-id-pedido " | seq:" w54600-id-sequencia-item delimited by "   " into ws99040-ds-message
+                   perform 9000-tracelog
+              end-if
+              move spaces                      to ws-external-id
+           else
+              move w54600-external-id          to ws-external-id
+           end-if.
+
+       2006-exit.
+            exit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      *>===================================================================================
+      *>            BDR-1149 - Inicio
+       2004-obter-dados-promo-id section.
+       2004.
+      *> Acesso a pedidos itens site
+
+           initialize w40200-itens-pedido-facil
+                      ws-indicador-promo
+                      ws-deal-id
+                      ws-external-id
+                      ws-nro-pedido-site.
+
+           move fcfmf-nr-id-pedido-site     to w40200-nr-id-pedido-site
+           move fcfmf-sequencia             to w40200-nr-sequencia.
+
+
+           invoke ws-obj-efw402 c-start     using c-chave-1, c-start-maior-igual, w40200-itens-pedido-facil
+                                                   returning lk-retorno-cl
+
+           invoke ws-obj-efw402 c-read-next using w40200-itens-pedido-facil
+                                                   returning lk-retorno-cl.
+
+
+
+
+            perform until not lk-operacao-ok
+                 or w40200-nr-id-pedido-site <> fcfmf-nr-id-pedido-site
+                   move fcfmf-nr-id-pedido-site     to ws-nro-pedido-site
+                   move "2004-obter-dados-promo-id"      to ws99040-ds-section
+                   move spaces                    to ws99040-ds-message
+                   string "---retorno-"
+                       "/lk-status-retorno.......:"   lk-status-retorno
+                       "/fcfmf-nr-id-pedido-site.......:"   fcfmf-nr-id-pedido-site
+                       "/w40200-nr-id-pedido-site.......:"   w40200-nr-id-pedido-site
+                       delimited by size into ws99040-ds-message
+                   perform 9000-tracelog
+
+
+
+      *>                 if   w40200-hercules
+                              perform 2005-obter-ind-promo
+
+
+      *>                         move "2004-obter-dados-promo-id"      to ws99040-ds-section
+      *>                         move spaces                    to ws99040-ds-message
+      *>                         string "---FCFIS---"
+      *>                             "fcfis-cd-empresa......:"   fcfis-cd-empresa
+      *>                             "/fcfis-cd-filial.......:"   fcfis-cd-filial
+      *>                             "/fcfis-tipo-nota.......:"   fcfis-tipo-nota
+      *>                             "/fcfis-codigo-des......:"   fcfis-codigo-des
+      *>                             "/fcfis-numero-doc......:"   fcfis-numero-doc
+      *>                             "/fcfis-serie-doc.......:"   fcfis-serie-doc
+      *>                             "/fcfis-codigo-registro.:"   fcfis-codigo-registro
+      *>                             "/fcfis-sequencia.......:"   fcfis-sequencia
+      *>                                         delimited by size into ws99040-ds-message
+      *>                         perform 9000-tracelog
+      *>
+      *>                         move "2004-obter-dados-promo-id"      to ws99040-ds-section
+      *>                         move spaces                    to ws99040-ds-message
+      *>                         move w40200-vl-unitario        to wk-mascara-40200-unitario
+      *>                         move w40200-vl-total           to wk-mascara-40200-total
+      *>                         move w40200-vl-original        to wk-mascara-40200-original
+      *>
+      *>                         string "---w40200---"
+      *>                             "w40200-nr-id-pedido-site......:"   w40200-nr-id-pedido-site
+      *>                             "/w40200-nr-sequencia..........:"   w40200-nr-sequencia
+      *>                             "/w40200-cd-pedido-promax......:"   w40200-cd-pedido-promax
+      *>                             "/w40200-cd-produto............:"   w40200-cd-produto
+      *>                             "/w40200-qt-item...............:"   w40200-qt-item
+      *>                             "/w40200-vl-unitario...........:"   wk-mascara-40200-unitario
+      *>                             "/w40200-vl-total..............:"   wk-mascara-40200-total
+      *>                             "/w40200-vl-original...........:"   wk-mascara-40200-original
+      *>                                         delimited by size into ws99040-ds-message
+      *>                         perform 9000-tracelog
+      *>
+      *>
+      *>                         move w40100-vl-total-pedido        to wk-mascara-40100-total-ped
+      *>
+      *>                         string "---w40100---"
+      *>                             "w40100-nr-id-pedido-site......:"   w40100-nr-id-pedido-site
+      *>                             "/w40100-cd-cliente............:"   w40100-cd-cliente
+      *>                             "/w40100-cd-condicao-pagt......:"   w40100-cd-condicao-pagto
+      *>                             "/w40100-vl-total-pedido.......:"   wk-mascara-40100-total-ped
+      *>                             "/w40100-dt-criacao-pedido.....:"   w40100-dt-criacao-pedido
+      *>                             "/wj01-vl-produto....:"             wj01-vl-produto
+      *>                             "/wj01-vl-total......:"             wj01-vl-total
+      *>
+      *>                                         delimited by size into ws99040-ds-message
+      *>                         perform 9000-tracelog
+      *>
+      *>
+
+                              if   w40100-origem-global
+                                   move w40200-id-desconto         to ws-deal-id
+                                   move w40200-ds-desconto         to ws-indicador-promo
+                                   move w40200-nr-id-pedido-site   to ws-nro-pedido-site
+                                   perform 2006-obter-external-id
+                              end-if
+      *>                 end-if
+
+                    invoke ws-obj-efw402 c-read-next using w40200-itens-pedido-facil
+                                                 returning lk-retorno-cl
+            end-perform.
+
+       2004-exit.
+           exit.
+      *>===================================================================================
+       2005-obter-ind-promo      section.
+       2005.
+      *> Acesso pedidos mestre site
+
+           initialize w40100-mestre-pedido-facil.
+
+           move fcfmf-nr-id-pedido-site     to w40100-nr-id-pedido-site
+
+           invoke ws-obj-efw401 c-read-ran using c-chave-1, w40100-mestre-pedido-facil
+                                                   returning lk-retorno-cl
+           if not lk-operacao-ok
+              if   ws99040-usar-tracelog-true
+                   move "2005-obter-ind-promo" to ws99040-ds-section
+                   string "==> pedido:" fcfmf-nr-id-pedido-site delimited by "   " into ws99040-ds-message
+                   perform 9000-tracelog
+              end-if
+           end-if.
+
+       2005-exit.
+            exit.
+      *>===================================================================================
+       2006-obter-external-id    section.
+       2006.
+      *> Acesso a detalhe de precos(Pricing Reason Detail)
+
+           initialize w54600-pricing-reason-detail
+
+           move w40200-nr-id-pedido-site to w54600-id-pedido
+           move w40200-nr-sequencia      to w54600-id-sequencia-item
+
+           invoke ws-obj-efw546 c-start        using c-chave-1, c-start-maior-igual, w54600-pricing-reason-detail
+                                               returning lk-retorno-cl
+           invoke ws-obj-efw546 c-read-next    using w54600-pricing-reason-detail
+                                               returning lk-retorno-cl
+           perform until not lk-operacao-ok
+                          or w54600-id-pedido          <> w40200-nr-id-pedido-site
+                          or w54600-id-sequencia-item  <> w40200-nr-sequencia
+      *> Valorização do external-id
+               move w54600-external-id                 to ws-external-id
+
+               invoke ws-obj-efw546 c-read-next using w54600-pricing-reason-detail
+                                                returning lk-retorno-cl
+           end-perform.
+
+       2006-exit.
+            exit.
+      *>===================================================================================
+      *>            BDR-1149 - fim
+
+
+
+
+
+
+
+

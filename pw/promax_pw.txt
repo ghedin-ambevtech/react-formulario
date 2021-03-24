@@ -1,0 +1,73 @@
+controles:
+https://dev.azure.com/AMBEV-SA/AMBEV-CORE/_boards/board/t/AMBEV-CORE%20Team/Backlog%20items
+
+Senhas do promax
+
+http://senha.hbsis.com.br/
+
+
+promax em aceite
+http://172.22.7.63/cgi-bin/PP00100.exe?ppopcao=1&call=PP00100
+hbsis
+pra criar usuario, alguem que tenha acesso, 
+entra em 07.22.11 cadastra usuario e senha,
+confirma com o codigo gerado em 
+http://senha.hbsis.com.br/, lembrar de colocar PWPE0136 no pgm executado.
+
+
+para debug:
+            call 'cbl_debugbreak'
+
+
+chamada via API
+http://127.0.0.1:8080/cgi-bin/PP00100.exe?ppopcao=55&requisicao=154
+
+
+HER-0696216a-cede-43ce-b003-6b7c588577d7                        @ ====> 64 + @
+HE - Hércules                           @ ===> 40 + @
+
+
+compilar pra aceite
+fonte seguro => compilar => ip 88 => compilar em D1
+
+
+Quando file-status = 39
+converter arquivo:
+Entrar no promax com as informações da hbsis.
+acessar configurações -> rotinas especiais.
+buscar a lista dos ultimos layouts que passaram por alguma alteração.
+encontrar o layout alterado que interessa, e marcar somente ele.
+se já converteu em algum momento, marcar a opção ignorar controle de execução.
+
+
+
+Buscar chave em arquivos no net express
+search => data tools => find on current key
+
+Verificar  file-status https://pcm.hbsis.com.br/status-cobol
+
+
+07.22.11
+pwpe0182 - baixa arquivos
+no filtro nome do arquivo
+
+
+executar
+//172.22.7.63\integ\dataux aqui ficam os arquivos compactados baixados
+4.242 e producao.
+
+
+
+github
+Wendy851020
+
+
+07.22.11 pra verificar conversor
+pwc1173/74/...
+verifica quais áreas passaram por conversor(hoje rodar a 1174)
+
+
+07.22.11
+pwpe0136
+
+senha na pagina de senhas

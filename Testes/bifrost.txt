@@ -1,0 +1,79 @@
+iniciou com Ricardo voiggt
+entrou Elder
+tutoria Lucas Costa Barreto
+wiki...processo de extração
+
+pesquisar arquitetura
+Canaã
+
+Arquitetura de extração(pesquisar extração)
+pwms(extensão de dump) contém todos os registros de base alteradas
+
+grava todos os registros em um dump
+pgm PW01345S gera os dumps
+
+Cria arquivos sequencias menores de dump
+
+pasta canaa contem uma pasta pra cada unb
+
+unb 0000 processos que não tem controle unb
+
+Fluxo inicia na pasta temp
+robo 09050D
+	- varre tudo que esta nas pastas temp e move para pasta run
+	- cria as estruturas de pastas
+	- Dispara um arquivo de controle pra start
+	
+Gerenciador le pwms e identifica quais programas são chamados pra fazer a geração do JSON
+Toda entidade nova gera alteração em 4 pontos:
+	chamada json
+	declaração de variaveis
+	variavel booleana
+	evaluate
+	
+	
+Programa gerador Json(nomenclatura organizada na abas programas bifrost)
+tem um automatizador q gera o programa gerador de json
+atentar pra rotina de conversão de conteudo pra json
+
+
+preencher entidade, dominio e grupo responsavel ao criar cada programa.
+
+
+depois de gerado, move pra fila correspondente
+
+habilita filas no config canaa.xml
+podemos parametrizar a quantidade de registros em cada arquivo json
+Json limite de 50MB do sender
+
+quando não enviado, é enviado pra pasta erro. encviados corretamente, aparece na sent	
+
+
+Carga inicial(como incluir uma entidade nova na carga)
+ - essa entidade vai exigir um filtro novo? Possui alto volume de informações?
+ - Se tiver filtro, tem que alterar os programas geradores de Json, cbl, html
+ - Javascript, ver listaArquivos pra tratar filtros.(PH050293.JS)
+  - ID.CLIENTE(FILTRO) / VALIDAÇÃO DO FILTRO
+
+Ver configuração de ambiente.
+	
+	
+	
+PFCTEMPC(BOOK COM TODAS AS MASCARAS MULTIREGISTROS MARCADOS -01-05)	
+UTILIZADO PELO COBOL E JAVASCRIPT
+
+Canaã integration tools
+
+
+automatizador codegen
+copybook to xls
+
+trabalhar com:
+jsonlint.com
+
+canaa integration tools
+
+	
+
+
+

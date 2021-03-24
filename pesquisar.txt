@@ -1,0 +1,36 @@
+data bricks - modela dados
+pyspark - transformação de dados
+sql - data warehouse
+
+datafactory captura informações
+captura informações e passa para datalake
+
+formato parquet
+
+
+Data factory (controle de execução de processos)
+Data dog(monitoramento das informações)
+
+utiliza a azure pra armazenar codigo python
+
+
+BI - Veronica
+dax e sql
+
+
+Malu bughay - LAB
+
+Michael Douglas - MD - Cientista de dados
+jupyter
+azure machine learning
+data bricks
+
+
+Fabricio - Data scientist
+Azure functions
+presto
+kubernets
+algoritmos operacao, setor, dia de visita
+
+
+Domain Driven Design - framework

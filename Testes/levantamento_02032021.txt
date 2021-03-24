@@ -1,0 +1,6 @@
+pw00043s - cria copia do registro inicializada(Copia TABELAS utilizadas na rotina de REMUNERACAO no penultimo dia util do mes)
+pw00625s - cria cópia e grava utilizando função que altera alfanumerico pra numerico(Importar Configurações do Promax Central)
+pw01074c - cria cópia e se houver troca de mês. por quê manda regravar?? 9000-atualiza-pd76300 (supervisores, atualiza dados de itens de performance do grupo de varejo)
+pw01075c - cria cópia e se houver troca de mês. por quê manda regravar?? 9000-atualiza-pd76300 (cadastro de vendedores, atualiza dados de itens de performance do grupo de varejo, acionado por opção na tela)
+pw02027c - 2700-excluir, exclui, mesmo com operação ok. acionado por opção.
+pw02028c - também atende uma solicitação de exclusão. acionado por opção.

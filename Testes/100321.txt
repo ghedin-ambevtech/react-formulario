@@ -1,0 +1,3 @@
+Erro ao acessar API em aceite:
+
+{ "retorno" : [ { "success" : false , "message" :"Falha na abertura do arquivo [/d1/promax/dat/EFD001.CAD] - Status [39" }  ] }

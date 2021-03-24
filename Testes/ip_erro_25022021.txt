@@ -1,0 +1,58 @@
+endereco de aceite
+172.22.7.63
+
+6.11
+21 dias uteis
+
+
+calcular..
+
+6.28
+por vendedor
+todos
+
+solicita relatorio
+
+
+
+atingimento do GV em relação ao vendedor
+
+
+2514C
+
+Verificar se informações do grupo varejo 90 e 91****
+
+
+Searching for 'f76300-perc-foco'...
+pw00071s.cbl revisado
+pw00425s.cbl revisado
+pw00625s.cbl
+pw01074c.cbl
+pw01075c.cbl
+pw02027c.cbl
+pw02027p.cbl
+pw02028c.cbl
+pw02028p.cbl
+pw02028p.cbl
+pw02029c.cbl
+pw02029p.cbl
+pw02032r.cbl
+pw02035c.cbl
+pw02036c.cbl
+pw02513i.cbl
+pw02514c.cbl
+pw02515c.cbl
+pw02519r.cbl
+pw99903f.cbl
+pwc1005c.cbl
+pwc1006b.cbl
+pwc1015.cbl
+pwc1016.cbl
+pwc1017a.cbl
+pwc1018.cbl
+pwc1020.cbl
+pwc1113.cbl
+pwc1153.cbl
+pwpe0335.cbl
+pwpe0419.cbl
+py070158.cbl

@@ -1,0 +1,19 @@
+0022021 - Duvida de jira sobre supervisores e gatilho
+
+item 1 - 
+rn - representante de negocio não tem supervisores
+cdd não tem mais supervisores
+06.11
+
+
+problema na exportação da folha de pagamento
+ip - indice de performance
+
+
+06.07
+
+tirar supervisores de calculos 06.11
+
+
+item 2 - gatilho 
+
