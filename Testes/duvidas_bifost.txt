@@ -1,0 +1,3 @@
+ - Como proceder com array, occurs já que tem um item de grupo, com filler controlando as repetições.
+ 
+ 

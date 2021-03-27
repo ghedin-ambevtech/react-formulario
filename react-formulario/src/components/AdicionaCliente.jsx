@@ -1,48 +1,52 @@
 import React from 'react';
-import { Formik } from 'formik';
+import { Formik, useField } from 'formik';
+import * as yup from 'yup';
+
+
+const Campo = ({label, ...props}) => {
+  const [field, meta] = useField(props);
+  return(
+    <div className='form-group'>
+      <label htmlFor={props.id}>{label}</label>
+      <input
+        {...field}
+        {...props}
+        className={meta.error && meta.touched ? 'is-invalid' : ''}
+      />
+      {meta.error && meta.touched ? (<div className="invalid-feedback">{meta.error}</div> ) : null}
+    </div>
+  )
+}
 
 const AdicionaCliente = () => {
+
+  const esquema = yup.object({
+    nome: yup.string()
+      .required('O nome é obrigatório!!')
+      .min(10, 'O nome deve ter no minimo 10 caracteres'),
+    email: yup.string()
+      .required('O email é obrigatório')
+      .email('E-mail inválido'),
+    nascimento: yup.date()
+      .required('A data é obrigatória')
+      .max(new Date(), 'Data deve ser anterior a atual')
+  })
+
   return (
     <>
       <h1>Cadastro de Clientes</h1>
       <Formik 
-        initialValues={{nome:'Alison', email:'', nascimento: ''}}
+        initialValues={{nome:'', email:'', nascimento: ''}}
+        validationSchema={esquema}
         onSubmit={(values) => {
           alert(JSON.stringify(values))
         }}
       >
         {(props) => (
-            <form noValidate onSubmit={props.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="nome">Nome</label>
-              <input 
-                id="nome" 
-                name="nome" 
-                type="text" 
-                value={props.values.nome}
-                onChange={props.handleChange} 
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input 
-                id="email" 
-                name="email" 
-                type="email" 
-                value={props.values.email}
-                onChange={props.handleChange} 
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="date">Data de Nascimento</label>
-              <input 
-                id="nascimento" 
-                name="nascimento" 
-                type="date" 
-                value={props.values.nascimento}
-                onChange={props.handleChange} 
-              />
-            </div>
+            <form onSubmit={props.handleSubmit} noValidate>
+              <Campo id="nome" name="nome" type="text" label="Nome" />
+              <Campo id="email" name="email" type="email" label="Email" />
+              <Campo id="nascimento" name="nascimento" type="date" label="Data de nascimento"/>
             <button type="submit">Adicionar</button>
           </form>
           )}
